@@ -22,11 +22,11 @@ public class LabelApplication {
 	@Bean
 	public Docket swaggerDocket() {
 		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
-				.apis(RequestHandlerSelectors.basePackage("ltu.dovanos")).build();
+				.apis(RequestHandlerSelectors.basePackage("lt.studija")).build();
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("IT Christmas Gifts Project").version("0.0.1-SNAPSHOT").build();
+		return new ApiInfoBuilder().title("Record Label Project").version("0.0.1-SNAPSHOT").build();
 	}
 
 	public static void main(String[] args) {
