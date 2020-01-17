@@ -10,9 +10,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import lt.studija.label.Label;
+import lt.studija.song.Song;
 
 @Entity
 public class Artist {
@@ -44,6 +47,10 @@ public class Artist {
 
 	@ManyToMany(mappedBy = "artists", cascade = { CascadeType.MERGE, CascadeType.DETACH }, fetch = FetchType.EAGER)
 	private List<Label> labels = new ArrayList<Label>();
+
+	@ManyToOne
+	@JoinColumn(name = "song_id")
+	private Song song;
 
 	public Artist() {
 	}

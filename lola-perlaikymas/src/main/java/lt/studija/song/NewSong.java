@@ -1,7 +1,5 @@
 package lt.studija.song;
 
-import javax.persistence.Column;
-
 public class NewSong {
 	private String title;
 	private String albumName;
