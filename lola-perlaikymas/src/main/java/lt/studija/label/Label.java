@@ -40,7 +40,7 @@ public class Label {
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
 	@JoinTable(name = "label_artist", joinColumns = { @JoinColumn(name = "label_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "artist_id") })
-	@JsonIgnore
+
 	private List<Artist> artists = new ArrayList<Artist>();
 
 	public Label() {

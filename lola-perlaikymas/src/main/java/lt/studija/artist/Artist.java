@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lt.studija.label.Label;
 import lt.studija.song.Song;
 
@@ -45,6 +47,7 @@ public class Artist {
 	@Column
 	private String photo;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "artists", cascade = { CascadeType.MERGE, CascadeType.DETACH }, fetch = FetchType.EAGER)
 	private List<Label> labels = new ArrayList<Label>();
 
