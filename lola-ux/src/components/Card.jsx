@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 class CardComponent extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div className="card mx-2" style={{ width: "13rem" }}>
         <img

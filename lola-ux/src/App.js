@@ -10,7 +10,6 @@ import { serverLabelToClientLabel } from "./model/labels";
 import { Switch, Route } from "react-router";
 import { AppDataContext } from "./context";
 import Header from "./components/Header";
-import CommingSoon from "./components/ComingSoon";
 
 function App() {
   const [labels, setLabels] = useState("loading");

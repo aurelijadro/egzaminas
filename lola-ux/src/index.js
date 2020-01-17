@@ -13,15 +13,15 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-var NoMatch = props => {
-  var goApp = () => props.history.push("/");
-  return (
-    <div>
-      Route did not match
-      <button onClick={goApp}>Go Home</button>
-    </div>
-  );
-};
+// var NoMatch = props => {
+//   var goApp = () => props.history.push("/");
+//   return (
+//     <div>
+//       Route did not match
+//       <button onClick={goApp}>Go Home</button>
+//     </div>
+//   );
+// };
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

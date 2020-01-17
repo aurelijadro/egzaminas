@@ -4,6 +4,7 @@ export function serverLabelToClientLabel(serverLabel) {
     title: serverLabel.title,
     logo: serverLabel.logo,
     category: serverLabel.category,
-    size: serverLabel.size
+    size: serverLabel.size,
+    artists: serverLabel.artists
   };
 }
