@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductListComponent from "./components/List";
-import ProductPage from "./components/LabelPage";
+import LabelPage from "./components/LabelPage";
 import AdminPanel from "./components/AdminPanel";
 import ProductAdministrationComponent from "./components/Administration";
 import ComingSoon from "./components/ComingSoon";
@@ -47,7 +47,7 @@ function App() {
           <Route path="/labels" exact component={ProductListComponent} />
           <Route path="/artists" exact component={ComingSoon} />
           <Route path="/songs" exact component={ComingSoon} />
-          <Route path="/labels/:id" exact component={ProductPage} />
+          <Route path="/labels/:id" exact component={LabelPage} />
           <Route path="/admin" exact component={AdminPanel} />
           <Route
             path="/admin/labels/new"
