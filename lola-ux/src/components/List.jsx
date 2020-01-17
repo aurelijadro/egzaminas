@@ -7,12 +7,11 @@ export default function ProductListComponent() {
   const labels = appData.labels;
 
   return (
-    <div className="row">
+    <div className="row my-2">
       {labels === "loading" ? (
         "Record labels are loading, please wait..."
       ) : (
         <div>
-          <p>Currently we manage {labels.length} record labels!</p>
           <div className="card-deck">
             {labels.map(label => {
               return (

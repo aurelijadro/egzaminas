@@ -104,7 +104,7 @@ class ProductAdministrationComponent extends React.Component {
     }
 
     return (
-      <div className="container">
+      <div className="container my-2">
         <div className="row">
           <div className="col-4">
             <form onSubmit={this.handleSubmit}>

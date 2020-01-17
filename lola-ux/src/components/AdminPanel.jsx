@@ -37,7 +37,7 @@ export default function AdminPanel() {
     );
   });
   return (
-    <div className="container">
+    <div className="container my-2">
       <Link className="btn btn-info my-2" to="/admin/labels/new">
         Add new Label
       </Link>
