@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCardComponent from "./ProductCard";
+import ProductCardComponent from "./Card";
 import { AppDataContext } from "../context";
 
 export default function ProductListComponent() {

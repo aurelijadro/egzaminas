@@ -7,12 +7,17 @@ export const Nav = function(props) {
       <ul className="nav row mx-auto justify-content-center ">
         <li className="nav-item col-2">
           <Link className="nav-link" to="/">
-            Dovanos
+            Record Labels
           </Link>
         </li>
         <li className="nav-item col-2">
-          <Link className="nav-link" to="/letters">
-            Laiškai
+          <Link className="nav-link" to="/artists">
+            Artists
+          </Link>
+        </li>
+        <li className="nav-item col-2">
+          <Link className="nav-link" to="/songs">
+            Songs
           </Link>
         </li>
         <li className="nav-item col-2">

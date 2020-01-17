@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import ProductListComponent from "./components/ProductList";
-import ProductPage from "./components/ProductPage";
+import ProductListComponent from "./components/List";
+import ProductPage from "./components/LabelPage";
 import AdminPanel from "./components/AdminPanel";
-import ProductAdministrationComponent from "./components/ProductAdministration";
-import Cart from "./components/Cart";
+import ProductAdministrationComponent from "./components/Administration";
+import ComingSoon from "./components/ComingSoon";
 import "./App.css";
 import { Nav } from "./components/NavBar";
 import { serverLabelToClientLabel } from "./model/labels";
 import { Switch, Route } from "react-router";
 import { AppDataContext } from "./context";
 import Header from "./components/Header";
+import CommingSoon from "./components/ComingSoon";
 
 function App() {
   const [labels, setLabels] = useState("loading");
@@ -44,7 +45,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={ProductListComponent} />
           <Route path="/labels" exact component={ProductListComponent} />
-          <Route path="/artists" exact component={Cart} />
+          <Route path="/artists" exact component={ComingSoon} />
+          <Route path="/songs" exact component={ComingSoon} />
           <Route path="/labels/:id" exact component={ProductPage} />
           <Route path="/admin" exact component={AdminPanel} />
           <Route
