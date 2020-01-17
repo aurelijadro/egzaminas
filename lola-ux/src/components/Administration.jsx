@@ -8,76 +8,69 @@ class ProductAdministrationComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    const isCreateMode = props.match.path === "/admin/dovanos/new";
+    const isCreateMode = props.match.path === "/admin/labels/new";
     this.state = {
       mode: isCreateMode ? "create" : "edit-loading",
       title: "",
-      image: "",
-      forAdults: false,
-      type: "",
-      description: "",
+      logo: "",
+      category: "",
+      size: "",
       url: "http://localhost:8080"
       //url: "http://localhost:8081/dovanos"
     };
   }
 
   componentDidMount() {
-    this.dovanosMayHaveLoaded();
+    this.labelsMayHaveLoaded();
   }
 
   componentDidUpdate() {
-    this.dovanosMayHaveLoaded();
+    this.labelsMayHaveLoaded();
   }
 
-  dovanosMayHaveLoaded() {
-    if (this.context.dovanos === "loading") return;
+  labelsMayHaveLoaded() {
+    if (this.context.labels === "loading") return;
     if (this.state.mode !== "edit-loading") return;
-    const dovana = this.context.dovanos.find(
-      dovana => String(dovana.id) === this.props.match.params.id
+    const label = this.context.labels.find(
+      label => String(label.id) === this.props.match.params.id
     );
-    if (!dovana) {
-      throw new Error("Neradau produkto");
+    if (!label) {
+      throw new Error("Label not found");
     }
     this.setState({
       mode: "edit",
-      id: dovana.id,
-      title: dovana.title,
-      image: dovana.image,
-      type: dovana.type,
-      forAdults: dovana.forAdults,
-      description: dovana.description
+      title: label.title,
+      logo: label.logo,
+      category: label.category,
+      size: label.size
     });
   }
 
   handleTitleChange = event => this.setState({ title: event.target.value });
-  handleImageChange = event => this.setState({ image: event.target.value });
-  handleTypeChange = event => this.setState({ type: event.target.value });
-  handleForAdultsChange = event =>
-    this.setState({ forAdults: event.target.checked });
-  handleDescriptionChange = event =>
-    this.setState({ description: event.target.value });
+  handleLogoChange = event => this.setState({ logo: event.target.value });
+  handleCategoryChange = event =>
+    this.setState({ category: event.target.value });
+  handleSizeChange = event => this.setState({ size: event.target.value });
 
-  saveProduct = () => {
+  saveLabel = () => {
     this.setState({ mode: "edit-saving" });
 
-    Axios.put(`${this.state.url}/api/dovanos/${this.props.match.params.id}`, {
+    Axios.put(`${this.state.url}/api/labels/${this.props.match.params.id}`, {
       title: this.state.title,
-      description: this.state.description,
-      img: this.state.image,
-      forAdults: this.state.forAdults,
-      type: this.state.type
+      logo: this.state.logo,
+      category: this.state.category,
+      size: this.state.size
     })
       .then(this.context.refreshProducts)
       .then(() => this.props.history.push("/admin"));
   };
 
-  createProduct = () => {
-    Axios.post(`${this.state.url}/api/dovanos`, {
+  createLabel = () => {
+    Axios.post(`${this.state.url}/api/labels`, {
       title: this.state.title,
-      description: this.state.description,
-      img: this.state.image,
-      forAdults: this.state.forAdults,
-      type: this.state.type
+      logo: this.state.logo,
+      category: this.state.category,
+      size: this.state.size
     })
       .then(this.context.refreshProducts)
       .then(() => this.props.history.push("/admin"));
@@ -87,9 +80,9 @@ class ProductAdministrationComponent extends React.Component {
     event.preventDefault();
 
     if (this.state.mode === "edit") {
-      this.saveProduct();
+      this.saveLabel();
     } else if (this.state.mode === "create") {
-      this.createProduct();
+      this.createLabel();
     } else if (this.state.mode === "edit-loading") {
       throw new Error("Not supposed to be possible to submit in edit-loading");
     } else {
@@ -117,7 +110,7 @@ class ProductAdministrationComponent extends React.Component {
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label>
-                  Pavadinimas
+                  Title
                   <input
                     type="text"
                     required="required"
@@ -129,61 +122,50 @@ class ProductAdministrationComponent extends React.Component {
               </div>
               <div className="form-group">
                 <label>
-                  Aprašymas
-                  <input
-                    type="text"
-                    id="description"
-                    required="required"
-                    className="form-control"
-                    value={this.state.description}
-                    onChange={this.handleDescriptionChange}
-                  />
-                </label>
-              </div>
-              <div className="form-group">
-                <label>
-                  Nuoroda į paveikslėlį
+                  Logo url
                   <input
                     type="url"
+                    id="logo"
                     required="required"
                     className="form-control"
-                    value={this.state.image}
-                    onChange={this.handleImageChange}
+                    value={this.state.logo}
+                    onChange={this.handleLogoChange}
                   />
                 </label>
               </div>
               <div className="form-group">
                 <label>
-                  Tipas
+                  Category (choose: National / Home / Live)
                   <input
                     type="text"
                     required="required"
                     className="form-control"
-                    value={this.state.type}
-                    onChange={this.handleTypeChange}
+                    value={this.state.category}
+                    onChange={this.handleCategoryChange}
                   />
                 </label>
               </div>
               <div className="form-group">
                 <label>
-                  Suaugusiems
+                  Size (choose: small / medium / large)
                   <input
-                    type="checkbox"
+                    type="text"
+                    required="required"
                     className="form-control"
-                    value={this.state.forAdults}
-                    onChange={this.handleForAdultsChange}
+                    value={this.state.size}
+                    onChange={this.handleSizeChange}
                   />
                 </label>
               </div>
 
               <button type="submit" className="btn btn-info">
-                Išsaugoti
+                Save
               </button>
               <button
                 className="btn btn-light mx-2"
                 onClick={() => this.props.history.push("/admin")}
               >
-                Atšaukti
+                Discard
               </button>
             </form>
           </div>

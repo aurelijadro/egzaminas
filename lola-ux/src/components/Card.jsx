@@ -1,29 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class ProductCardComponent extends React.Component {
+class CardComponent extends React.Component {
   render() {
     console.log(this.props);
     return (
       <div className="card mx-2" style={{ width: "13rem" }}>
         <img
-          src={this.props.dovana.image}
+          src={this.props.label.logo}
           className="card-img-top img-fluid"
           alt=""
         />
         <div className="card-body">
-          <h5 className="card-title">{this.props.dovana.title}</h5>
-          <p className="card-text m-0 p-0">{this.props.dovana.description}</p>
-          <Link
-            className="btn btn-primary"
-            to={`/dovanos/${this.props.dovana.id}`}
-          >
-            Daugiau informacijos
-          </Link>
+          <h5 className="card-title betterText">{this.props.label.title}</h5>
+          <p className="card-text m-0 p-0 betterText">
+            {this.props.label.category}
+          </p>
+          <div className="text-center">
+            <Link
+              className="btn btn-primary my-1"
+              to={`/labels/${this.props.label.id}`}
+            >
+              More info
+            </Link>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default ProductCardComponent;
+export default CardComponent;

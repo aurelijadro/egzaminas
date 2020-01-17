@@ -22,11 +22,11 @@ export default function AdminPanel() {
       <div className="row my-1" key={label.id}>
         <div className="col-2">{index + 1}</div>
         <div className="col-2">
-          <Link to={`/admin/dovanos/${label.id}`}>
-            <img src={label.image} className="img-fluid" alt="" />
+          <Link to={`/admin/labels/${label.id}`}>
+            <img src={label.logo} className="img-fluid" alt="" />
           </Link>
         </div>
-        <Link className="col-3" to={`/admin/dovanos/${label.id}`}>
+        <Link className="col-3" to={`/admin/labels/${label.id}`}>
           {label.title}
         </Link>
         <button className="col-2 btn btn-danger" onClick={deleteLabel}>
@@ -38,7 +38,7 @@ export default function AdminPanel() {
   });
   return (
     <div className="container">
-      <Link className="btn btn-info my-2" to="/admin/dovanos/new">
+      <Link className="btn btn-info my-2" to="/admin/labels/new">
         Add new Label
       </Link>
       <div className="row">

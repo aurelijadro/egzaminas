@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCardComponent from "./Card";
+import CardComponent from "./Card";
 import { AppDataContext } from "../context";
 
 export default function ProductListComponent() {
@@ -17,7 +17,7 @@ export default function ProductListComponent() {
             {labels.map(label => {
               return (
                 <div className="col-3 mx-auto my-3" key={label.id}>
-                  <ProductCardComponent dovana={label} />
+                  <CardComponent label={label} />
                 </div>
               );
             })}
